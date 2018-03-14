@@ -51,86 +51,66 @@ def write_char_A():
 
 """
 
-  // i =   1; ledval = i; outeye(); // segment A
-  // i =   2; ledval = i; outeye(); // segment B
-  // i =   4; ledval = i; outeye(); // segment C
-  // i =   8; ledval = i; outeye(); // segment D
-  // i =  16; ledval = i; outeye(); // segment E
-  // i =  32; ledval = i; outeye(); // segment F
-  // i =  64; ledval = i; outeye(); // segment G
-  // i = 128; ledval = i; outeye(); // colon
+  // i =   1;  // segment A
+  // i =   2;  // segment B
+  // i =   4;  // segment C
+  // i =   8;  // segment D
+  // i =  16;  // segment E
+  // i =  32;  // segment F
+  // i =  64;  // segment G
+  // i = 128;  // colon
 
 
   // 0 
   i = 1 + 2 + 4 + 8 + 16 + 32 +  0 +   0;
-      ledval = i; outeye();
 
   // 1
   i = 0 + 2 + 4 + 0 +  0 +  0 +  0 +   0;
-      ledval = i; outeye();
 
-  // 2     // 1 2 8 16 64
+  // 2
   i = 1 + 2 + 0 + 8 + 16 +  0 + 64 +   0;
-      ledval = i; outeye();
 
   // 3
   i = 1 + 2 + 4 + 8 +  0 +  0 + 64 +   0;
-      ledval = i; outeye();
 
-  // 4   //  2 4 32 64
+  // 4
   i = 0 + 2 + 4 + 0 +  0 + 32 + 64 +   0;
-      ledval = i; outeye();
 
-  // 5   // like 2
+  // 5
   i = 1 + 0 + 4 + 8 +  0 + 32 + 64 +   0;
-      ledval = i; outeye();
 
   // 6
   i = 1 + 0 + 4 + 8 + 16 + 32 + 64 +   0;
-      ledval = i; outeye();
 
   // 7
   i = 1 + 2 + 4 + 0 +  0 +  0 +  0 +   0;
-      ledval = i; outeye();
 
   // 8
   i = 1 + 2 + 4 + 8 + 16 + 32 + 64 +   0;
-      ledval = i; outeye();
 
   // 9
   i = 1 + 2 + 4 + 0 +  0 + 32 + 64 +   0;
-      ledval = i; outeye();
 
   // A
   i = 1 + 2 + 4 + 16 + 32 + 64;
-      ledval = i; outeye();
 
   // b
   i = 4 + 8 + 16 + 32 + 64;
-      ledval = i; outeye();
 
   // C
   i = 1 + 8 + 16 + 32;
-      ledval = i; outeye();
 
   // d
   i = 2 + 4 + 8 + 16 + 64;
-      ledval = i; outeye();
 
   // E
   i = 1 + 8 + 16 + 32 + 64;
-      ledval = i; outeye();
 
   // F
   i = 1 + 0 + 16 + 32 + 64;
-      ledval = i; outeye();
 
 
   i = 1 + 2 + 4 + 8 + 16 + 32 + 64 + 128;
-  i = 0;
-
-  i = 128; ledval = i; outeye(); blankleds(); delay(255);
-  i = 128; ledval = i; outeye(); blankleds(); delay(255);
 
 }
 """
@@ -168,6 +148,16 @@ def write_char_d():
     bytes_out()
 
 
+# write 'E'
+
+def write_char_E():
+    global mbytes
+    # i = 1 + 8 + 16 + 32 + 64;
+    # 0111 1001
+    mbytes = bytearray(b'\x00\x79')
+    bytes_out()
+
+
 
 
 
@@ -185,6 +175,7 @@ write_blank();   time.sleep(2.0)
 write_char_d();  time.sleep(2.0)
 
 write_blank();   time.sleep(2.0)
-write_char_d();  time.sleep(2.0)
+write_char_E();  time.sleep(2.0)
 
 
+# END.

@@ -49,110 +49,133 @@ def write_char_A():
     mbytes = bytearray(b'\x00\x77')
     bytes_out()
 
+"""
 
-# write a 'B' on the 7-segment display
+  // i =   1;  // segment A
+  // i =   2;  // segment B
+  // i =   4;  // segment C
+  // i =   8;  // segment D
+  // i =  16;  // segment E
+  // i =  32;  // segment F
+  // i =  64;  // segment G
+  // i = 128;  // colon
+
+
+  // 0 
+  i = 1 + 2 + 4 + 8 + 16 + 32 +  0 +   0;
+
+  // 1
+  i = 0 + 2 + 4 + 0 +  0 +  0 +  0 +   0;
+
+  // 2
+  i = 1 + 2 + 0 + 8 + 16 +  0 + 64 +   0;
+
+  // 3
+  i = 1 + 2 + 4 + 8 +  0 +  0 + 64 +   0;
+
+  // 4
+  i = 0 + 2 + 4 + 0 +  0 + 32 + 64 +   0;
+
+  // 5
+  i = 1 + 0 + 4 + 8 +  0 + 32 + 64 +   0;
+
+  // 6
+  i = 1 + 0 + 4 + 8 + 16 + 32 + 64 +   0;
+
+  // 7
+  i = 1 + 2 + 4 + 0 +  0 +  0 +  0 +   0;
+
+  // 8
+  i = 1 + 2 + 4 + 8 + 16 + 32 + 64 +   0;
+
+  // 9
+  i = 1 + 2 + 4 + 0 +  0 + 32 + 64 +   0;
+
+  // A
+  i = 1 + 2 + 4 + 16 + 32 + 64;
+
+  // b
+  i = 4 + 8 + 16 + 32 + 64;
+
+  // C
+  i = 1 + 8 + 16 + 32;
+
+  // d
+  i = 2 + 4 + 8 + 16 + 64;
+
+  // E
+  i = 1 + 8 + 16 + 32 + 64;
+
+  // F
+  i = 1 + 0 + 16 + 32 + 64;
+
+
+  i = 1 + 2 + 4 + 8 + 16 + 32 + 64 + 128;
+
+}
+"""
+
+
+
+# write a 'b' on the 7-segment display
 
 def write_char_b():
     global mbytes
     # i = 4 + 8 + 16 + 32 + 64;
     # 0111 1100
-    mbytes = bytearray(b'\x00\x7f')
+    mbytes = bytearray(b'\x00\x7c')
+    bytes_out()
+
+
+
+# write a 'C' on the 7-segment display
+
+def write_char_C():
+    global mbytes
+    # i = 1 + 8 + 16 + 32;
+    # 0011 1001
+    mbytes = bytearray(b'\x00\x39')
+    bytes_out()
+
+
+# write 'd'
+
+def write_char_d():
+    global mbytes
+    # i = 2 + 4 + 8 + 16 + 64;
+    # 0101 1110
+    mbytes = bytearray(b'\x00\x5e')
+    bytes_out()
+
+
+# write 'E'
+
+def write_char_E():
+    global mbytes
+    # i = 1 + 8 + 16 + 32 + 64;
+    # 0111 1001
+    mbytes = bytearray(b'\x00\x79')
     bytes_out()
 
 
 
 
+
 # - - - -   The Program   - - - -
-write_char_A()
-time.sleep(2.0)
-write_blank()
-time.sleep(2.0)
-write_char_b()
-time.sleep(2.0)
+write_blank();   time.sleep(0.1)
+write_char_A();  time.sleep(2.0)
 
-"""
+write_blank();   time.sleep(2.0)
+write_char_b();  time.sleep(2.0)
 
-  // i =   1; ledval = i; outeye(); // segment A
-  // i =   2; ledval = i; outeye(); // segment B
-  // i =   4; ledval = i; outeye(); // segment C
-  // i =   8; ledval = i; outeye(); // segment D
-  // i =  16; ledval = i; outeye(); // segment E
-  // i =  32; ledval = i; outeye(); // segment F
-  // i =  64; ledval = i; outeye(); // segment G
-  // i = 128; ledval = i; outeye(); // colon
+write_blank();   time.sleep(2.0)
+write_char_C();  time.sleep(2.0)
+
+write_blank();   time.sleep(2.0)
+write_char_d();  time.sleep(2.0)
+
+write_blank();   time.sleep(2.0)
+write_char_E();  time.sleep(2.0)
 
 
-  // 0 
-  i = 1 + 2 + 4 + 8 + 16 + 32 +  0 +   0;
-      ledval = i; outeye();
-
-  // 1
-  i = 0 + 2 + 4 + 0 +  0 +  0 +  0 +   0;
-      ledval = i; outeye();
-
-  // 2     // 1 2 8 16 64
-  i = 1 + 2 + 0 + 8 + 16 +  0 + 64 +   0;
-      ledval = i; outeye();
-
-  // 3
-  i = 1 + 2 + 4 + 8 +  0 +  0 + 64 +   0;
-      ledval = i; outeye();
-
-  // 4   //  2 4 32 64
-  i = 0 + 2 + 4 + 0 +  0 + 32 + 64 +   0;
-      ledval = i; outeye();
-
-  // 5   // like 2
-  i = 1 + 0 + 4 + 8 +  0 + 32 + 64 +   0;
-      ledval = i; outeye();
-
-  // 6
-  i = 1 + 0 + 4 + 8 + 16 + 32 + 64 +   0;
-      ledval = i; outeye();
-
-  // 7
-  i = 1 + 2 + 4 + 0 +  0 +  0 +  0 +   0;
-      ledval = i; outeye();
-
-  // 8
-  i = 1 + 2 + 4 + 8 + 16 + 32 + 64 +   0;
-      ledval = i; outeye();
-
-  // 9
-  i = 1 + 2 + 4 + 0 +  0 + 32 + 64 +   0;
-      ledval = i; outeye();
-
-  // A
-  i = 1 + 2 + 4 + 16 + 32 + 64;
-      ledval = i; outeye();
-
-  // b
-  i = 4 + 8 + 16 + 32 + 64;
-      ledval = i; outeye();
-
-  // C
-  i = 1 + 8 + 16 + 32;
-      ledval = i; outeye();
-
-  // d
-  i = 2 + 4 + 8 + 16 + 64;
-      ledval = i; outeye();
-
-  // E
-  i = 1 + 8 + 16 + 32 + 64;
-      ledval = i; outeye();
-
-  // F
-  i = 1 + 0 + 16 + 32 + 64;
-      ledval = i; outeye();
-
-
-  i = 1 + 2 + 4 + 8 + 16 + 32 + 64 + 128;
-  i = 0;
-
-  i = 128; ledval = i; outeye(); blankleds(); delay(255);
-  i = 128; ledval = i; outeye(); blankleds(); delay(255);
-
-}
-"""
-
+# END.
