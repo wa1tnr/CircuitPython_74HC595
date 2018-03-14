@@ -10,9 +10,9 @@ import digitalio
 import time
 from adafruit_bus_device import spi_device
 from micropython import const
-data   = board.D4
-clk    = board.D3
-latch  = digitalio.DigitalInOut(board.D2)
+data   = board.D4 # grey wire Pin 14 74HC595
+clk    = board.D3 # yellow wire is Pin 11 74HC595
+latch  = digitalio.DigitalInOut(board.D2) # pin 12 74HC595
 latch.switch_to_output(value =True, drive_mode=digitalio.DriveMode.PUSH_PULL)
 spi = busio.SPI(clk, MOSI=data)
 

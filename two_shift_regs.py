@@ -43,13 +43,35 @@ def write_blank():
 
 
 
+#            Dg3  Dg2  Dg1  Dg0
+# Notches:  0x02 0x04 0x08 0x10
+
+  # 0001 1110
+  #    1    e
+
+# all notched out:  14 + 16 0x1e
+
+# enable Dg0:  0x0e
+
+#   0001 0110
+# enable Dg1:  0x16
+
+#   0001 1110
+#   0001 1010
+# enable Dg2:  0x1a
+
+
+#   0001 1110
+#   0001 1100
+# enable Dg3:  0x1c
+
 # write an 'A' on the 7-segment display
 
-def write_char_A():
+def write_char_A2():
     global mbytes
     # i = 1 + 2 + 4 + 16 + 32 + 64;
     # 0111 0111
-    mbytes = bytearray(b'\x00\x77')
+    mbytes = bytearray(b'\x1c\x77')
     bytes_out()
 
 """
@@ -166,7 +188,9 @@ def write_char_E():
 
 # - - - -   The Program   - - - -
 write_blank();   time.sleep(0.1)
-write_char_A();  time.sleep(2.0)
+write_char_A2();  time.sleep(2.0)
+
+time.sleep(22.0);
 
 write_blank();   time.sleep(2.0)
 write_char_b();  time.sleep(2.0)
