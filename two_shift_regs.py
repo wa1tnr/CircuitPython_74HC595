@@ -1,8 +1,17 @@
 # Christopher W Hafey, wa1tnr    14 March 2018  02:19 UTC
 # LICENSE: MIT
 
-# works for a single shift register.  Assumed to work
-# with two of them cascaded (needs proving on hardware).
+# Wed Mar 14 06:08:31 UTC 2018
+
+# works for two cascaded shift registers.
+# proven on hardware.
+
+# latch and clock wired in parallel (each is now
+# a bus).  The clock bus gets an extra bypass capacitor 100 nF.
+
+# wired such that the 2nd shift register's outputs
+# are sinks for the common cathodes of the digits
+# in the 4-digit 7-segment array.
 
 import board
 import busio
@@ -33,6 +42,10 @@ def bytes_out():
         cmd = mbytes[p]
         write_data_out(cmd)
 
+def byte_out():
+    global cmd, mbytes
+    cmd = mbytes[0]
+    write_data_out(cmd)
 
 
 # blank the 7-segment display
@@ -71,8 +84,43 @@ def write_char_A2():
     global mbytes
     # i = 1 + 2 + 4 + 16 + 32 + 64;
     # 0111 0111
-    mbytes = bytearray(b'\x1c\x77')
-    bytes_out()
+
+    mbytes = bytearray(b'\x1c')
+    byte_out()
+    mbytes = bytearray(b'\x77')
+    byte_out()
+
+    time.sleep(3.0)
+
+    mbytes = bytearray(b'\x1a')
+    byte_out()
+    mbytes = bytearray(b'\x77')
+    byte_out()
+
+    time.sleep(3.0)
+
+    mbytes = bytearray(b'\x16')
+    byte_out()
+    mbytes = bytearray(b'\x77')
+    byte_out()
+
+    time.sleep(3.0)
+
+    mbytes = bytearray(b'\x0e')
+    byte_out()
+    mbytes = bytearray(b'\x77')
+    byte_out()
+
+    time.sleep(3.0)
+
+
+
+    time.sleep(3.0)
+    time.sleep(3.0)
+    time.sleep(3.0)
+    time.sleep(3.0)
+    time.sleep(3.0)
+    time.sleep(3.0)
 
 """
 
