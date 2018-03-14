@@ -1,6 +1,9 @@
 # Christopher W Hafey, wa1tnr    14 March 2018  02:19 UTC
 # LICENSE: MIT
 
+# works for a single shift register.  Assumed to work
+# with two of them cascaded (needs proving on hardware).
+
 import board
 import busio
 import digitalio
@@ -176,6 +179,8 @@ write_char_d();  time.sleep(2.0)
 
 write_blank();   time.sleep(2.0)
 write_char_E();  time.sleep(2.0)
+
+time.sleep(9);   write_blank();
 
 
 # END.
